@@ -27,7 +27,7 @@
 # As remote environments cannot access the image created locally. It also sets explicit min_cpu and min_memory values for the nodes
 # as in Kubernetes, the 0 value is interpreted as the max value. This is not the case for the local Docker environment.
 network_configuration:
-  chain_id: 80087
+  chain_id: 80094
   chain_spec: "devnet"
   validators:
     type: "validator"
@@ -97,6 +97,7 @@ node_settings:
       min_memory: 1024
       max_memory: 2048
     images:
+      beaconkit: ghcr.io/swollows/beacon-kit:main
       besu: hyperledger/besu:24.5.4
       erigon: erigontech/erigon:latest
       ethereumjs: ethpandaops/ethereumjs:stable

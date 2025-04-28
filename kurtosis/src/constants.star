@@ -25,7 +25,10 @@ PRE_FUNDED_ACCOUNTS = [
         "0x56898d1aFb10cad584961eb96AcD476C6826e41E",
         "9b9bc88a144fff869ae2f4ea8e252f2494d9b52ea1008d0b3537dad27ab489d5",
     ),
-
+    new_prefunded_account(
+        "0x0xC25ae1Db77B06d234eD406F47e6A9B6A3C3C1d98",
+        "0c9ca3de08698e455e30266085e8fcd6b41d604941abbd92f574cec53144a1bd",
+    ),
     # Starting here we use this mnemonic 'brass gallery tennis vintage crack virus outside bike fossil shock sword panda ritual about cover clap fruit festival parrot capable high vacant orchard hurt'
     new_prefunded_account(
         "0x1e2e53c2451d0f9ED4B7952991BE0c95165D5c01",

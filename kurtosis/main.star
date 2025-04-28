@@ -32,7 +32,7 @@ def run(plan, network_configuration = {}, node_settings = {}, eth_json_rpc_endpo
     # all_node_settings = nodes.parse_node_settings(node_settings, all_node_types)
 
     # Get chain configuration from network_configuration, if not provided, use default values
-    chain_id = network_configuration.get("chain_id", 80087)
+    chain_id = network_configuration.get("chain_id", 80094)
     chain_spec = network_configuration.get("chain_spec", "devnet")
 
     plan.print("CHAIN_ID: {}".format(chain_id), "CHAIN_SPEC: {}".format(chain_spec))
