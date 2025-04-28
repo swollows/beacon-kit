@@ -79,7 +79,7 @@ node_settings:
       min_memory: 1024
       max_memory: 2048
     images:
-      beaconkit: ghcr.io/berachain/beacon-kit:main
+      beaconkit: ghcr.io/swollows/beacon-kit:main
     config:
       timeout_propose: 2s
       timeout_prevote: 2s
