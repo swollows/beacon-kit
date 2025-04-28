@@ -34,13 +34,7 @@ USED_PORTS = {
 def get_config(node_struct, engine_dial_url, chain_id, chain_spec, genesis_deposits_root, genesis_deposit_count_hex, entrypoint = [], cmd = [], persistent_peers = "", expose_ports = True, jwt_file = None, kzg_trusted_setup_file = None):
     exposed_ports = {}
     if expose_ports:
-        if node_struct.node_type == "seed":
-            exposed_ports = {
-                k: v for k, v in USED_PORTS.items()
-                if k != COMETBFT_RPC_PORT_ID
-            }
-        else:
-            exposed_ports = USED_PORTS
+        exposed_ports = USED_PORTS
 
     files = {}
     if jwt_file:
