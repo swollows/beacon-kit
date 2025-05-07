@@ -23,6 +23,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+# beacon-kit/kurtosis/beaconkit-local.yaml
 network_configuration:
   chain_id: 80087
   chain_spec: "devnet"
@@ -37,13 +38,13 @@ network_configuration:
         replicas: 0
       - el_type: reth
         kzg_impl: crate-crypto/go-kzg-4844
-        replicas: 2
+        replicas: 0
       - el_type: geth
         kzg_impl: crate-crypto/go-kzg-4844
-        replicas: 2
+        replicas: 1
       - el_type: erigon
         kzg_impl: crate-crypto/go-kzg-4844
-        replicas: 1
+        replicas: 0
       - el_type: ethereumjs
         replicas: 0
   full_nodes:
@@ -51,7 +52,7 @@ network_configuration:
     nodes:
       - el_type: reth
         kzg_impl: crate-crypto/go-kzg-4844
-        replicas: 2
+        replicas: 0
       - el_type: geth
         kzg_impl: crate-crypto/go-kzg-4844
         replicas: 1
@@ -60,13 +61,14 @@ network_configuration:
       - el_type: besu
         replicas: 0
       - el_type: erigon
+        kzg_impl: crate-crypto/go-kzg-4844
         replicas: 1
       - el_type: ethereumjs
         replicas: 0
   seed_nodes:
     type: "seed"
     nodes:
-      - el_type: reth
+      - el_type: geth
         replicas: 1
 node_settings:
   consensus_settings:
@@ -86,7 +88,7 @@ node_settings:
       max_num_outbound_peers: 10
     app:
       payload_timeout: 850ms
-      enable_optimistic_payload_builds: false
+      enable_optimistic_payload_builds: true
   execution_settings:
     specs:
       min_cpu: 0
@@ -94,31 +96,35 @@ node_settings:
       min_memory: 0
       max_memory: 2048
     images:
-      besu: hyperledger/besu:24.5.4
+      # besu: hyperledger/besu:24.5.4
       erigon: erigontech/erigon:latest
-      ethereumjs: ethpandaops/ethereumjs:stable
-      geth: ethereum/client-go:latest
-      nethermind: nethermind/nethermind:latest
-      reth: ghcr.io/paradigmxyz/reth:latest
-eth_json_rpc_endpoints:
+      # ethereumjs: ethpandaops/ethereumjs:stable
+      # geth: ethereum/client-go:latest
+      geth: ghcr.io/swollows/client-go:main
+      # nethermind: nethermind/nethermind:latest
+      # reth: ghcr.io/paradigmxyz/reth:latest
+# eth_json_rpc_endpoints:
   # type has to be either blutgang or nginx
-  - type: blutgang
-    clients:
-      - el-full-reth-0
-      - el-full-reth-1
-      - el-full-geth-2
+  # - type: nginx
+    # clients:
+      # - el-full-reth-0
+      # - el-full-reth-1
+      # - el-full-geth-2
       # - el-full-nethermind-3
       # - el-full-besu-4
       # - el-full-erigon-5
       # - el-full-ethereumjs-6
+      # - el-full-geth-0
+      # - el-full-geth-1
+      # - el-full-geth-2
 additional_services:
-  - name: "spamoor"
-  - name: "tx-fuzz"
-    replicas: 16
-  - name: "prometheus"
-  - name: "grafana"
-  - name: "pyroscope"
-  - name: "blockscout"
-    client: "el-full-reth-0"
+  # - name: "spamoor"
+  # - name: "tx-fuzz"
+  #   replicas: 16
+  # - name: "prometheus"
+  # - name: "grafana"
+  # - name: "pyroscope"
+  # - name: "blockscout"
+  #   client: "el-full-reth-0"
   - name: "otterscan" # otterscan supports only erigon nodes
-    client: "el-full-erigon-3"
+    client: "el-full-erigon-1"

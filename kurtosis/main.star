@@ -182,7 +182,7 @@ def run(plan, network_configuration = {}, node_settings = {}, eth_json_rpc_endpo
 
     for n, seed_node in enumerate(seed_nodes):
         beacond.dial_unsafe_peers(plan, seed_node.cl_service_name, all_consensus_peering_info)
-
+    """
     # Get only the first rpc endpoint
     eth_json_rpc_endpoint = eth_json_rpc_endpoints[0]
     endpoint_type = eth_json_rpc_endpoint["type"]
@@ -206,11 +206,12 @@ def run(plan, network_configuration = {}, node_settings = {}, eth_json_rpc_endpo
 
     else:
         plan.print("Invalid type for eth_json_rpc_endpoint")
-
+    """
     # 7. Start additional services
     prometheus_url = ""
     for s_dict in additional_services:
         s = service_module.parse_service_from_dict(s_dict)
+        """
         if s.name == "spamoor":
             plan.print("Launching spamoor")
             ip_spamoor = plan.get_service(endpoint_type).ip_address
@@ -223,6 +224,8 @@ def run(plan, network_configuration = {}, node_settings = {}, eth_json_rpc_endpo
             next_free_prefunded_account += 1
             plan.print("Successfully launched spamoor")
         elif s.name == "tx-fuzz":
+        """
+        if s.name == "tx-fuzz":
             plan.print("Launching tx-fuzz")
             if "replicas" not in s_dict:
                 s.replicas = 1

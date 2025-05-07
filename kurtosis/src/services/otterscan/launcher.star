@@ -24,7 +24,8 @@ def launch_otterscan(
 
 def get_config():
     public_rpc_port_num = 8547
-    el_client_rpc_url = "http://localhost:{}/".format(
+    #el_client_rpc_url = "http://localhost:{}/".format(
+    el_client_rpc_url = "http://10.8.0.1:{}/".format(
         public_rpc_port_num,
     )
     return ServiceConfig(
